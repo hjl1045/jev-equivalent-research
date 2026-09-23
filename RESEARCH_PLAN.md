@@ -149,3 +149,7 @@ A PDF or DOCX file is a container, not a model modality. Jev and Laya need extra
 - [S3: Laya model card and configurations](https://huggingface.co/convaiinnovations/laya)
 - [S4: ModernBERT encoder configuration](https://huggingface.co/answerdotai/ModernBERT-large/blob/main/config.json)
 - [S5: OpenAI Luna model specification](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
+
+## OpenJev follow-up on 23 September
+
+OpenJev FP8 community demo: **2/2 scored initial documents correct; run incomplete**. The third call hit anonymous ZeroGPU quota. Boundary and length probes remain untested. This route uses a different prompt and uncalibrated letter softmax, not the official helper. No paid fallback was used. See [method and constraints](OPENJEV_EVALUATION.md), `results/openjev-demo.jsonl`, and `results/openjev-demo-errors.jsonl`. The executive visual now prominently shows **chunked Laya 12/12 correct** on long probes, with prefix-only behavior as a control.

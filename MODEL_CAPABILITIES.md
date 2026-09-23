@@ -17,3 +17,7 @@ A PDF or DOCX file is a container, not a model modality. Jev and Laya need extra
 - [S3: Laya model card and configurations](https://huggingface.co/convaiinnovations/laya)
 - [S4: ModernBERT encoder configuration](https://huggingface.co/answerdotai/ModernBERT-large/blob/main/config.json)
 - [S5: OpenAI Luna model specification](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
+
+## OpenJev addition
+
+[OpenJev](https://huggingface.co/openjev/openjev) supports text, JSON/DOM and screenshots in its official GPU helper; 16,384 prompt tokens, one image per request and 52 options per pass. MLX variants are text-only. Its weights use CC BY-NC 4.0. Our community-demo attempt used FP8 dequantized to BF16, text only, and stopped after two scored examples because quota was exhausted. No long-input capacity was measured.

@@ -1,0 +1,1 @@
+{"id": "doc_03", "status": "failed", "error": "Demo returned error: {'error': 'You have exceeded your ZeroGPU runs limit. Authenticate with a Hugging Face token for more quota - https://huggingface.co/settings/tokens', 'duration': 10, 'visible': True, 'title': 'ZeroGPU quota exceeded'}", "elapsed_s": 0.5646294589387253}

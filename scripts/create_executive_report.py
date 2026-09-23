@@ -61,10 +61,10 @@ doc.add_paragraph('Auto insurance document\nclassification evaluation','Title')
 doc.add_paragraph('Executive assessment of Jev Laya and GPT 5 6 Luna','Subtitle')
 p('22 September 2026  |  Feasibility pilot')
 h('Evaluation summary')
-p('The pilot compared Jev 1.13, default English Laya, and GPT-5.6 Luna on ten initial documents, eight additional boundary cases, and 12 length probes. Jev and Luna matched every author-assigned label. Laya made three errors on the initial set and four on the boundary set; chunking recovered its length-probe failures.')
+p('The pilot compared Jev 1.13, default English Laya, and GPT-5.6 Luna on ten initial documents, eight additional boundary cases, and 12 length probes. Jev and Luna matched every author-assigned label. Laya made three errors on the initial set and four on the boundary set; chunked Laya classified all 12 long-input probes correctly. A later OpenJev demo run completed only two scored cases before quota exhaustion (page 16).')
 table(['Evaluation','Measured result','Test coverage'],[
  ['Ten short documents','Jev 10/10\nLuna 10/10\nLaya 7/10','One example per category; 238–288 document tokens using the Laya tokenizer.'],
- ['Twelve length probes','Jev / Luna 12/12\nLaya prefix 4/12\nLaya chunks 12/12','One police report in filler at about 1k, 4k, 5k, and 16k tokens; evidence at start, middle, or end.'],
+ ['Twelve length probes','Jev / Luna 12/12\nLaya chunks 12/12\nPrefix control 4/12','One police report in filler at about 1k, 4k, 5k, and 16k tokens; evidence at start, middle, or end.'],
  ['Eight boundary cases','Jev / Luna 8/8\nLaya 4/8','Related document purposes and one out-of-taxonomy collection letter; 92–120 document tokens.'],
  ['OpenRouter spend','$0.004184','30 Jev calls. Luna used Codex allowance; Laya ran locally. The spending cap was $0.05.']],[1.5,1.5,4])
 h('Observed errors and input handling')
@@ -270,5 +270,20 @@ p('S4  ModernBERT encoder configuration',True).runs[0].font.size=Pt(9)
 p('https://huggingface.co/answerdotai/ModernBERT-large/blob/main/config.json').runs[0].font.size=Pt(8)
 p('S5  OpenAI Luna model specification',True).runs[0].font.size=Pt(9)
 p('https://developers.openai.com/api/docs/models/gpt-5.6-luna').runs[0].font.size=Pt(8)
+
+page('OpenJev additional evaluation and limitations')
+p('Added 23 September 2026. The public community demo completed two scored initial documents correctly, then rejected the third request because the anonymous ZeroGPU quota was exhausted. OpenJev is partially tested; its results cannot be ranked against the completed three-model evaluation.')
+table(['Test group','Completed','Observed outcome'],[['Initial ten documents','2 of 10','Police report and demand letter correct; remaining eight not run.'],['Eight boundary cases','0 of 8','Not run.'],['Twelve length probes','0 of 12','Not run.']],[2,1.3,3.7])
+h('Actual route and score meaning')
+p('The model-card-linked community Space serves openjev/openjev-FP8 dequantized to BF16 through Transformers on ZeroGPU. It returns probabilities from candidate-letter logits without the official helper choice temperature of 0.85. Its Gradio confidence fields are class probabilities, not a separately returned native confidence statistic. The full document text was preserved; shared instructions were prepended and label definitions appended to names, with commas replaced by semicolons for CSV transport.')
+openjev_rows=[json.loads(x) for x in (ROOT/'results/openjev-demo.jsonl').read_text().splitlines()]
+table(['Document','Prediction','Selected probability','Client seconds'],[[r['id'],r['prediction'],f"{r['selected_probability']:.4f}",f"{r['elapsed_s']:.2f}"] for r in openjev_rows],[1,2,2,2])
+p('One preliminary connectivity pilot was excluded. Client timings include network, queue and GPU allocation; two observations do not establish typical speed. No paid inference calls were made. The demo source revision and method are recorded in results/openjev-demo.metadata.json; the quota rejection is preserved separately. No automatic retries were made.')
+h('Published capabilities and deployment constraints')
+p('The official model card describes text, JSON/DOM and screenshot input, one image per request, prompts up to 16,384 tokens, and 52 choices in one pass. Larger choice sets require several passes. The public demo exposes text and at most 26 labels. MLX builds are text-only. A 16k document plus instructions can exceed the official prompt budget; our longest probe has not been tested on OpenJev.')
+p('The smallest published MLX build is about 15 GB; available local disk was 9.6 GiB. The weights are CC BY-NC 4.0, requiring attention to noncommercial licensing before any commercial deployment. OpenJev is independent of TypeSafe. An authenticated demo quota, suitable endpoint, or local checkpoint is required to finish this benchmark.')
+h('Laya presentation correction')
+p('Chunked Laya achieved 12/12 correct long-input classifications, including 3/3 at 5k tokens. The one-pager now leads with that result; the 4/12 prefix score is retained as a truncation control. Initial and boundary inputs fit one window, so their 7/10 and 4/8 results are separate from chunk recovery.')
+p('Sources: https://huggingface.co/openjev/openjev and https://huggingface.co/spaces/chanoian/openjev-mlx-demo/blob/037a94430fdeda9956e97b8c0f30aea0652bced6/app.py').runs[0].font.size=Pt(8)
 out=ROOT/'reports/2026-09-22-Auto-Claims-Classification-Executive-Report.docx';doc.save(out)
 print(out)

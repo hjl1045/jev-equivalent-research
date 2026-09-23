@@ -19,6 +19,8 @@ def main():
   predictions=json.loads(luna_path.read_text())['predictions']
   assert len(predictions)==len(gold) and {r['id'] for r in predictions}==set(gold)
   result['luna-smoke']={'n':len(predictions),'correct':sum(gold[r['id']]==r['label'] for r in predictions),'accuracy':sum(gold[r['id']]==r['label'] for r in predictions)/len(predictions),'route':'Codex ChatGPT login','api_cost_usd':None,'latency_comparable':False}
+ oj=rows('openjev-demo.jsonl')
+ if oj: result['openjev-demo']={'n':len(oj),'correct':sum(r['correct'] for r in oj),'planned_n':30,'status':'partial_quota_exhausted' if len(oj)<30 else 'completed','api_cost_usd':0,'comparability':'Different community-demo prompt and raw softmax; no native confidence'}
  (ROOT/'results/summary.json').write_text(json.dumps(result,indent=2)+'\n')
  print(json.dumps(result,indent=2))
  j={r['id']:r for r in rows('jev-smoke.jsonl')}; l={r['id']:r for r in rows('laya-smoke.jsonl')}

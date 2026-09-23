@@ -1,0 +1,14 @@
+{
+  "model": "openjev/openjev-FP8",
+  "route": "community Gradio ZeroGPU demo, FP8 checkpoint dequantized to bf16",
+  "space_revision": "037a94430fdeda9956e97b8c0f30aea0652bced6",
+  "source": "https://huggingface.co/spaces/chanoian/openjev-mlx-demo/blob/main/app.py",
+  "calibration": "demo raw candidate-letter softmax; official helper T=0.85 not applied",
+  "native_confidence": null,
+  "input_adaptation": "Shared instructions prepended to document. Label definitions appended to label names; commas replaced by semicolons for CSV transport. Different prompt from official helper.",
+  "latency": "client round trip including ZeroGPU queue/allocation",
+  "pilot": "One preliminary doc_01 call succeeded; excluded from scored run.",
+  "paid_api_cost_usd": 0,
+  "license": "CC-BY-NC-4.0; research/noncommercial",
+  "truncation": "No truncation in inspected demo source; serving maximum not independently verified."
+}

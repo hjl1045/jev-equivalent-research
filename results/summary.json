@@ -90,5 +90,13 @@
     "route": "Codex ChatGPT login",
     "api_cost_usd": null,
     "latency_comparable": false
+  },
+  "openjev-demo": {
+    "n": 2,
+    "correct": 2,
+    "planned_n": 30,
+    "status": "partial_quota_exhausted",
+    "api_cost_usd": 0,
+    "comparability": "Different community-demo prompt and raw softmax; no native confidence"
   }
 }
