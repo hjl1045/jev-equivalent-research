@@ -1,0 +1,12 @@
+SYNTHETIC TRAINING DOCUMENT — NO REAL PERSON OR EVENT
+Willow Outpatient Center | Patient account DEMO-803 | Statement date May 9, 2026
+Patient: Casey North. Referring event: motor vehicle collision, April 18. Bill to: Alder Mutual claims department.
+Date of service | Service description | Units | Charge
+April 19 | New patient evaluation | 1 | $240.00
+April 19 | Cervical spine radiograph, two views | 1 | $180.00
+April 26 | Therapeutic exercise | 2 | $160.00
+April 26 | Manual therapy | 1 | $95.00
+May 3 | Therapeutic exercise | 2 | $160.00
+May 3 | Manual therapy | 1 | $95.00
+Total charges: $930.00. Payments posted: $100.00. Contractual adjustments: $80.00. Remaining balance: $750.00.
+Please include the account identifier with payment. Questions about individual charges should be directed to the billing office. The brief service descriptions identify billed services; this statement does not contain a clinical examination or a treatment plan. No settlement of an injury claim is offered by accepting payment of this balance. Duplicate copy supplied at the patient's request.

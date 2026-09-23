@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "predictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "enum": [
+              "police_report",
+              "demand_letter",
+              "medical_bill",
+              "medical_record",
+              "repair_estimate",
+              "rental_invoice",
+              "witness_statement",
+              "coverage_letter",
+              "subrogation_notice",
+              "settlement_release",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "predictions"
+  ],
+  "additionalProperties": false
+}

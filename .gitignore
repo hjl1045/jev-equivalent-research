@@ -1,0 +1,14 @@
+env.
+.env
+.env.*
+.venv/
+.cache/
+__pycache__/
+
+# Local rendering intermediates and operating-system files
+reports/qa*/
+.DS_Store
+*.pyc
+results/*.lock
+results/*stderr.txt
+results/**/*stderr.txt

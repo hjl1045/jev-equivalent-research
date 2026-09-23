@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-22",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "checkpoint_snapshot": [
+    "1c5edc17a7acd8701df6fc341c0d179f1c62c982"
+  ],
+  "data_sha256": "3a335121ca5efce540f97ee6794184b357e2399bb6401c01daee709e088ffc5d",
+  "stress_sha256": "2de639d411d16ce0a72cf757258f92fbd4265f4ad1bd2ac88e1332a386ef4a1b",
+  "luna_status": "completed",
+  "openrouter_allowed_model": "typesafe/jev-1.13",
+  "budget_usd": 0.05,
+  "luna_model_requested": "gpt-5.6-luna",
+  "luna_reasoning_effort": "none",
+  "luna_route": "Codex CLI using existing ChatGPT login",
+  "luna_tool_calls": 0,
+  "luna_batch_size": 10,
+  "luna_usage": {
+    "input_tokens": 14756,
+    "output_tokens": 134,
+    "reasoning_output_tokens": 0
+  },
+  "luna_long_status": "completed",
+  "luna_long_independent_calls": 12,
+  "luna_long_usage": {
+    "input_tokens": 221545,
+    "cached_input_tokens": 52992,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 204,
+    "reasoning_output_tokens": 0
+  },
+  "length_5k_sha256": "35cf6e33d23c05936d1f1c095b3dcf171ad5e444f3d6cc83116c743ff70ec200",
+  "boundary_data_sha256": "149faddea05341e6f59528c97644f093ab4e97d0bf25e0afaa072a19597542fb",
+  "boundary_cases": 8,
+  "luna_boundary_usage": {
+    "input_tokens": 96437,
+    "cached_input_tokens": 46848,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 133,
+    "reasoning_output_tokens": 0
+  },
+  "luna_boundary_tool_calls": 0
+}

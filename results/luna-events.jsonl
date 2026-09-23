@@ -1,0 +1,4 @@
+{"type": "thread.started"}
+{"type": "turn.started"}
+{"type": "item.completed", "item": {"id": "item_0", "type": "agent_message", "text": "{\"predictions\":[{\"id\":\"doc_07\",\"label\":\"witness_statement\"},{\"id\":\"doc_03\",\"label\":\"medical_bill\"},{\"id\":\"doc_10\",\"label\":\"settlement_release\"},{\"id\":\"doc_01\",\"label\":\"police_report\"},{\"id\":\"doc_08\",\"label\":\"coverage_letter\"},{\"id\":\"doc_05\",\"label\":\"repair_estimate\"},{\"id\":\"doc_02\",\"label\":\"demand_letter\"},{\"id\":\"doc_09\",\"label\":\"subrogation_notice\"},{\"id\":\"doc_06\",\"label\":\"rental_invoice\"},{\"id\":\"doc_04\",\"label\":\"medical_record\"}]}"}}
+{"type": "turn.completed", "usage": {"input_tokens": 14756, "cached_input_tokens": 0, "cache_write_input_tokens": 0, "output_tokens": 134, "reasoning_output_tokens": 0}}

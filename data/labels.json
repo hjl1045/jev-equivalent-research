@@ -1,0 +1,13 @@
+{
+  "police_report": "Officer collision investigation, observations and driver accounts",
+  "demand_letter": "Attorney request for settlement payment resolving an injury claim",
+  "medical_bill": "Provider itemized charges, balances and request for payment",
+  "medical_record": "Clinical history, examination, diagnosis and treatment plan",
+  "repair_estimate": "Vehicle repair parts, labor and estimated repair costs",
+  "rental_invoice": "Rental vehicle dates, daily rates and billed charges",
+  "witness_statement": "First-person non-officer account of the collision",
+  "coverage_letter": "Insurer communication about policy coverage or reservation of rights",
+  "subrogation_notice": "Insurer recovery request for amounts already paid",
+  "settlement_release": "Agreement releasing claims in exchange for settlement",
+  "other": "Unrelated content or insufficient evidence of any listed type"
+}
