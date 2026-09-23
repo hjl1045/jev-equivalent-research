@@ -11,7 +11,7 @@ S=json.loads((ROOT/'results/summary.json').read_text())
 rows=lambda name:[json.loads(x) for x in (ROOT/'results'/name).read_text().splitlines()]
 cost=json.loads((ROOT/'results/openrouter-spend.json').read_text())['charged_or_reserved_usd']
 out=ROOT/'reports/2026-09-22-Classification-Executive-One-Page.pdf'
-c=canvas.Canvas(str(out),pagesize=(1000,1010));c.setTitle('Auto claims classification | Executive comparison');c.setAuthor('')
+c=canvas.Canvas(str(out),pagesize=(1000,1010));c.setTitle('Auto Claims Document Classification - Model Comparison');c.setAuthor('')
 navy='#153346';muted='#586B77';teal='#087F8C';purple='#6554A4';gold='#A86A16'
 def box(x,y,w,h,fill,r=8):
  c.setFillColor(HexColor(fill));c.roundRect(x,1010-y-h,w,h,r,stroke=0,fill=1)
@@ -22,7 +22,7 @@ def para(x,y,w,t,size=10,color=muted):
  _,h=p.wrap(w,200);p.drawOn(c,x,1010-y-h);return h
 box(0,0,1000,1010,'#F3F6F8',0)
 text(34,23,'AUTO CLAIMS  /  SYNTHETIC EVALUATION',10,teal,True)
-text(34,43,'Three models. Measured results.',28,navy,True)
+text(34,43,'Auto Claims Document Classification - Model Comparison',26,navy,True)
 text(34,82,'18 short documents + 12 length probes  |  22 September 2026  |  No additional inference for this visual',10,muted)
 models=[('Jev','Hosted decision model / OpenRouter',teal,'jev-smoke','jev-boundary'),('Laya','English checkpoint / local CPU',gold,'laya-smoke','laya-boundary'),('GPT-5.6 Luna','General LLM / Codex login',purple,'luna-smoke','luna-boundary')]
 for i,(name,sub,color,short,boundary) in enumerate(models):
