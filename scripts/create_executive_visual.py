@@ -11,16 +11,16 @@ S=json.loads((ROOT/'results/summary.json').read_text())
 rows=lambda name:[json.loads(x) for x in (ROOT/'results'/name).read_text().splitlines()]
 cost=json.loads((ROOT/'results/openrouter-spend.json').read_text())['charged_or_reserved_usd']
 out=ROOT/'reports/2026-09-22-Classification-Executive-One-Page.pdf'
-c=canvas.Canvas(str(out),pagesize=(1000,880));c.setTitle('Auto claims classification | Executive comparison');c.setAuthor('')
+c=canvas.Canvas(str(out),pagesize=(1000,1010));c.setTitle('Auto claims classification | Executive comparison');c.setAuthor('')
 navy='#153346';muted='#586B77';teal='#087F8C';purple='#6554A4';gold='#A86A16'
 def box(x,y,w,h,fill,r=8):
- c.setFillColor(HexColor(fill));c.roundRect(x,880-y-h,w,h,r,stroke=0,fill=1)
+ c.setFillColor(HexColor(fill));c.roundRect(x,1010-y-h,w,h,r,stroke=0,fill=1)
 def text(x,y,t,size=11,color=navy,bold=False):
- c.setFillColor(HexColor(color));c.setFont('Helvetica-Bold' if bold else 'Helvetica',size);c.drawString(x,880-y-size,t)
+ c.setFillColor(HexColor(color));c.setFont('Helvetica-Bold' if bold else 'Helvetica',size);c.drawString(x,1010-y-size,t)
 def para(x,y,w,t,size=10,color=muted):
  p=Paragraph(t,ParagraphStyle('p',fontName='Helvetica',fontSize=size,leading=size*1.38,textColor=HexColor(color)))
- _,h=p.wrap(w,200);p.drawOn(c,x,880-y-h);return h
-box(0,0,1000,880,'#F3F6F8',0)
+ _,h=p.wrap(w,200);p.drawOn(c,x,1010-y-h);return h
+box(0,0,1000,1010,'#F3F6F8',0)
 text(34,23,'AUTO CLAIMS  /  SYNTHETIC EVALUATION',10,teal,True)
 text(34,43,'Three models. Measured results.',28,navy,True)
 text(34,82,'18 short documents + 12 length probes  |  22 September 2026  |  No additional inference for this visual',10,muted)
@@ -55,17 +55,28 @@ text(50,559,'AT YOUR 5k DOCUMENT LENGTH',9,navy,True)
 para(50,579,285,'<b>Jev + Luna: 3/3 each.</b> Both received full text. Evidence was tested at start, middle and end.',10,navy)
 para(353,559,283,'<b>Laya: 1/3 prefix; 3/3 chunked.</b><br/>324 document-token allowance in this setup; 18 chunks covered each 5k input.',10,navy)
 para(661,559,288,'<b>5k observed response times</b><br/>Jev 0.30-0.46 s; Luna 3.22-3.46 s;<br/>Laya chunks 7.73-7.74 s.',10,navy)
-text(34,635,'INPUT AND OUTPUT CONSTRAINTS',9,navy,True)
+text(34,635,'PUBLISHED CAPABILITIES / DISTINCT FROM TESTED LIMITS',9,navy,True)
 for i,(title,body) in enumerate([
- ('Jev','<b>Text documents tested.</b> OpenRouter lists 32k context tokens; reserve room for question and labels. Returns choice, class probabilities and confidence.'),
- ('Laya','<b>Text documents tested.</b> Default 512 total tokens left 324 for the document. Later text is silently clipped. Chunking adds compute; pooled confidence is not calibrated.'),
- ('GPT-5.6 Luna','<b>Text documents tested.</b> Published model context: 1.05M tokens; this Codex route was tested only to ~16k document tokens. Returned JSON label; no native score in this run.')]):
+ ('Jev','<b>Text only:</b> strings, JSON, text arrays. No image/audio/video. [S1]<br/><b>Direct:</b> 64k total request; state + longest question 32k. <b>OpenRouter:</b> 32k. Service limits, not disclosed architecture. [S1,S2]'),
+ ('Laya','<b>Text / JSON-as-text.</b> No documented native image/audio/video path. [S3]<br/><b>Default:</b> 512 total; 324 document tokens here. Backbone: 8,192 positions, not validated Laya capacity. Multilingual: 1,024 default, up to 8,192 encoder. [S3,S4]'),
+ ('GPT-5.6 Luna','<b>Text + image input;</b> text output. No audio/video. [S5]<br/><b>Published:</b> 1,050,000 context; 128,000 max output. Codex route may differ. Only text to ~16k document tokens tested. [S5]')]):
  x=34+i*316
- box(x,654,300,102,'#FFFFFF')
+ box(x,654,300,132,'#FFFFFF')
  text(x+12,663,title,11,[teal,gold,purple][i],True)
  para(x+12,683,276,body,9)
-para(34,769,455,'<b>Confidence is not accuracy.</b> Laya returned native confidence 0.9999 and 0.9943 on two wrong boundary labels. Scores were not calibrated on representative claims.',10,navy)
-para(511,769,455,'<b>Limits of the comparison.</b> Long probes reuse one police report in repeated filler at 1k, 4k, 5k and 16k Laya tokens. Synthetic results do not estimate production accuracy.',10,navy)
-text(34,833,'Text-only evaluation; OCR/images not tested. Timing includes each serving stack: Jev network, Laya CPU, Luna CLI/Codex overhead. Not an intrinsic speed or dollar-cost ranking.',8,muted)
-text(34,848,'Sources: retained results + report references for published limits. Tokenizers differ. Boundary cases were designed after initial errors; labels frozen before inference.',8,muted)
+para(34,797,455,'<b>Confidence is not accuracy.</b> Laya returned native confidence 0.9999 and 0.9943 on two wrong boundary labels. Scores were not calibrated on representative claims.',10,navy)
+para(511,797,455,'<b>Limits of the comparison.</b> Long probes reuse one police report in repeated filler at 1k, 4k, 5k and 16k Laya tokens. Synthetic results do not estimate production accuracy.',10,navy)
+text(34,861,'Text-only evaluation; OCR/images not tested. Timing includes each serving stack: Jev network, Laya CPU, Luna CLI/Codex overhead. Not an intrinsic speed or dollar-cost ranking.',8,muted)
+text(34,876,'Sources: retained results + report references for published limits. Tokenizers differ. Boundary cases were designed after initial errors; labels frozen before inference.',8,muted)
+text(34,897,'PRIMARY EVIDENCE / VERIFIED 22 SEPTEMBER 2026',8,navy,True)
+text(34,912,'S1  https://docs.typesafe.ai/models',8,muted)
+c.linkURL('https://docs.typesafe.ai/models',(34,1010-912-11,950,1010-912+1),relative=0)
+text(34,928,'S2  https://openrouter.ai/typesafe/jev-1.13',8,muted)
+c.linkURL('https://openrouter.ai/typesafe/jev-1.13',(34,1010-928-11,950,1010-928+1),relative=0)
+text(34,944,'S3  https://huggingface.co/convaiinnovations/laya',8,muted)
+c.linkURL('https://huggingface.co/convaiinnovations/laya',(34,1010-944-11,950,1010-944+1),relative=0)
+text(34,960,'S4  https://huggingface.co/answerdotai/ModernBERT-large/blob/main/config.json',8,muted)
+c.linkURL('https://huggingface.co/answerdotai/ModernBERT-large/blob/main/config.json',(34,1010-960-11,950,1010-960+1),relative=0)
+text(34,976,'S5  https://developers.openai.com/api/docs/models/gpt-5.6-luna',8,muted)
+c.linkURL('https://developers.openai.com/api/docs/models/gpt-5.6-luna',(34,1010-976-11,950,1010-976+1),relative=0)
 c.showPage();c.save();assert len(PdfReader(out).pages)==1;print(out)

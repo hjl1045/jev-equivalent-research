@@ -4,6 +4,7 @@ Research and implementation pilot, 2026-09-22. All people, identifiers, organiza
 
 **Initial result:** Jev correctly classified 10/10 short examples; default English Laya classified 7/10. This is a smoke test, not evidence of production accuracy or a general ranking. GPT-5.6 Luna also classified 10/10 correctly through the existing Codex ChatGPT login, with no tool calls. The current assistant's own labels are not presented as independent Luna predictions.
 
+- [Published input types and context limits with evidence](MODEL_CAPABILITIES.md)
 - [One-page executive comparison including model constraints](reports/2026-09-22-Classification-Executive-One-Page.pdf)
 - [Executive report with findings, confidence scores, and sample documents](reports/2026-09-22-Auto-Claims-Classification-Executive-Report.docx)
 - [Complete confusing-category examples](BOUNDARY_DOCUMENTS.md)
