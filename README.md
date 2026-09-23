@@ -77,3 +77,5 @@ Eight additional short boundary cases scored Jev 8/8, Luna 8/8, Laya 4/8. Comple
 ## Public evidence package
 
 Provider request identifiers and Codex task identifiers have been removed from retained response logs. Predictions, confidence values, usage totals, input hashes, and model versions are preserved. Git authorship uses a GitHub noreply address.
+
+Luna API-equivalent cost estimate: **$0.049142** using recorded cached usage, or **$0.067113** without cache discounts. This is not an actual Codex charge. Calculation and pricing source: `results/luna-cost-estimate.json`.

@@ -40,7 +40,7 @@ for i,(name,sub,color,short,boundary) in enumerate(models):
  text(x+18,356,'BOUNDARY CASE LATENCY',8,muted,True)
  text(x+18,373,f"{S[boundary]['median_seconds']:.2f} s",25,navy,True)
  text(x+112,384,'median / document',9,muted)
- text(x+18,418,'OBSERVED INFERENCE COST',8,muted,True)
+ text(x+18,418,'API-EQUIVALENT COST ESTIMATE' if name=='GPT-5.6 Luna' else 'OBSERVED INFERENCE COST',8,muted,True)
  if name=='Jev':
   text(x+18,436,f'${cost:.6f}',24,color,True)
   para(x+18,473,263,'30 total calls; 0.418 cents.<br/>All tests stayed within the $0.05 cap.')
@@ -48,8 +48,8 @@ for i,(name,sub,color,short,boundary) in enumerate(models):
   text(x+18,436,'Local compute',22,color,True)
   para(x+18,473,263,'No API fee. CPU, memory and setup costs<br/>were not monetized in this pilot.')
  else:
-  text(x+18,436,'Codex allowance',22,color,True)
-  para(x+18,473,263,'No OpenRouter use. Subscription usage<br/>was not converted to a dollar cost.')
+  text(x+18,436,'~$0.049 estimated',22,color,True)
+  para(x+18,473,263,'API-equivalent estimate, not a Codex bill.<br/>21 calls / 30 docs; includes overhead. [S5]')
 box(34,548,932,74,'#E4EDF1')
 text(50,559,'AT YOUR 5k DOCUMENT LENGTH',9,navy,True)
 para(50,579,285,'<b>Jev + Luna: 3/3 each.</b> Both received full text. Evidence was tested at start, middle and end.',10,navy)
@@ -67,7 +67,7 @@ for i,(title,body) in enumerate([
 para(34,797,455,'<b>Confidence is not accuracy.</b> Laya returned native confidence 0.9999 and 0.9943 on two wrong boundary labels. Scores were not calibrated on representative claims.',10,navy)
 para(511,797,455,'<b>Limits of the comparison.</b> Long probes reuse one police report in repeated filler at 1k, 4k, 5k and 16k Laya tokens. Synthetic results do not estimate production accuracy.',10,navy)
 text(34,861,'Text-only evaluation; OCR/images not tested. Timing includes each serving stack: Jev network, Laya CPU, Luna CLI/Codex overhead. Not an intrinsic speed or dollar-cost ranking.',8,muted)
-text(34,876,'Sources: retained results + report references for published limits. Tokenizers differ. Boundary cases were designed after initial errors; labels frozen before inference.',8,muted)
+text(34,876,'Luna estimate: 232,898 uncached + 99,840 cached input; 471 output. Rates / 1M: $0.20 / $0.02 / $1.20. No-cache estimate: $0.067. [S5]',8,muted)
 text(34,897,'PRIMARY EVIDENCE / VERIFIED 22 SEPTEMBER 2026',8,navy,True)
 text(34,912,'S1  https://docs.typesafe.ai/models',8,muted)
 c.linkURL('https://docs.typesafe.ai/models',(34,1010-912-11,950,1010-912+1),relative=0)
