@@ -20,4 +20,4 @@ A PDF or DOCX file is a container, not a model modality. Jev and Laya need extra
 
 ## OpenJev addition
 
-[OpenJev](https://huggingface.co/openjev/openjev) supports text, JSON/DOM and screenshots in its official GPU helper; 16,384 prompt tokens, one image per request and 52 options per pass. MLX variants are text-only. Its weights use CC BY-NC 4.0. Our community-demo attempt used FP8 dequantized to BF16, text only, and stopped after two scored examples because quota was exhausted. No long-input capacity was measured.
+[OpenJev](https://huggingface.co/openjev/openjev) supports text, JSON/DOM and screenshots in its official GPU helper; 16,384 prompt tokens, one image per request and 52 options per pass. MLX variants are text-only. Its weights use CC BY-NC 4.0. Our community-demo attempt used FP8 dequantized to BF16, text only, and completed all ten initial examples correctly, then stopped before the boundary cases because quota was exhausted. No long-input capacity was measured.

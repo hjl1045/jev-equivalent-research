@@ -92,8 +92,8 @@
     "latency_comparable": false
   },
   "openjev-demo": {
-    "n": 2,
-    "correct": 2,
+    "n": 10,
+    "correct": 10,
     "planned_n": 30,
     "status": "partial_quota_exhausted",
     "api_cost_usd": 0,

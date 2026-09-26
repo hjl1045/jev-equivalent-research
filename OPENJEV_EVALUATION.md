@@ -1,5 +1,13 @@
 # OpenJev evaluation route
 
+## Results updated 26 September 2026
+
+All **10/10 initial documents** were classified correctly. **0/8 boundary cases and 0/12 long-input probes** have completed. An authenticated continuation exhausted the free ZeroGPU quota before boundary_01; the 26 September retry was also rejected before inference. These are unavailable results, not classification errors. No paid fallback was used.
+
+The two initial anonymous results and eight authenticated results are retained together; the preliminary connectivity pilot remains excluded. Raw class probabilities and client timings are in `results/openjev-demo.jsonl`.
+
+## Serving route
+
 The requested model is [openjev/openjev](https://huggingface.co/openjev/openjev). Its published local builds require approximately 54 GB (BF16), 29 GB (FP8), 27 GB (MLX 8-bit), or 15 GB (MLX 4-bit). Local free disk at preparation was 9.6 GiB, insufficient for the smallest build. No weights were downloaded.
 
 The model-card-linked [community demo](https://huggingface.co/spaces/chanoian/openjev-mlx-demo) is available and serves `openjev/openjev-FP8`, dequantized to BF16 on ZeroGPU. Its [source](https://huggingface.co/spaces/chanoian/openjev-mlx-demo/blob/037a94430fdeda9956e97b8c0f30aea0652bced6/app.py) uses candidate-letter logits with softmax; it does not apply the official helper's choice temperature of 0.85. This is a different serving implementation, not an exact reproduction of the official helper.

@@ -80,6 +80,6 @@ Provider request identifiers and Codex task identifiers have been removed from r
 
 Luna API-equivalent cost estimate: **$0.049142** using recorded cached usage, or **$0.067113** without cache discounts. This is not an actual Codex charge. Calculation and pricing source: `results/luna-cost-estimate.json`.
 
-## OpenJev follow-up on 23 September
+## OpenJev follow-up updated 26 September
 
-OpenJev FP8 community demo: **2/2 scored initial documents correct; run incomplete**. The third call hit anonymous ZeroGPU quota. Boundary and length probes remain untested. This route uses a different prompt and uncalibrated letter softmax, not the official helper. No paid fallback was used. See [method and constraints](OPENJEV_EVALUATION.md), `results/openjev-demo.jsonl`, and `results/openjev-demo-errors.jsonl`. The executive visual now prominently shows **chunked Laya 12/12 correct** on long probes, with prefix-only behavior as a control.
+OpenJev FP8 community demo: **10/10 initial documents correct; overall run incomplete**. Authenticated continuation exhausted free ZeroGPU quota before the first boundary case; the 26 September retry was also quota-rejected. Boundary and length probes remain untested. This route uses a different prompt and uncalibrated letter softmax, not the official helper. No paid fallback was used. See [method and constraints](OPENJEV_EVALUATION.md), `results/openjev-demo.jsonl`, and `results/openjev-demo-errors.jsonl`. The executive visual now prominently shows **chunked Laya 12/12 correct** on long probes, with prefix-only behavior as a control.
